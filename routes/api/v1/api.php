@@ -21,9 +21,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length');
-header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Expose-Headers: Content-Length, X-JSON");
+header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: *");
 
 
 Route::controller(RegisterController::class)->group(function () {
