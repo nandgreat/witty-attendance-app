@@ -20,7 +20,7 @@ class WorkerController extends BaseController
             'last_name' => 'required|string',
             'email' => 'required|email|unique:workers',
             'department_id' => 'required',
-            'image_url' => 'required|string'
+            'image_url' => 'string'
         ]);
 
         if ($validator->fails()) {
