@@ -61,7 +61,7 @@ class KeyLogController extends BaseController
 
         try {
 
-            $workers = DB::table('key_logs')->join('workers', 'workers.id', '=', 'key_logs.worker_id')->join('keys', 'keys.id', '=', 'key_logs.key_id')->select('key_logs.*', 'workers.first_name', 'workers.image_url', 'workers.last_name', 'keys.key_name')->get();
+            $workers = DB::table('key_logs')->join('workers', 'workers.id', '=', 'key_logs.worker_id')->join('keys', 'keys.id', '=', 'key_logs.key_id')->select('key_logs.*', 'workers.first_name', 'workers.image_url', 'workers.last_name', 'keys.key_name')->orderBy('key_logs.id', 'DESC')->get();
 
             return $this->sendResponse($workers, 'Key Pick Logged successfully.');
         } catch (Exception $e) {
