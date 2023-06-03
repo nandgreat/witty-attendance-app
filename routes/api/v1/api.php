@@ -40,7 +40,7 @@ Route::middleware('auth:sanctum')->controller(WorkerController::class)->prefix('
 });
 
 Route::middleware('auth:sanctum')->controller(DepartmentController::class)->prefix('/departments')->group(function () {
-    Route::post('add', 'addWorker');
+    Route::post('', 'addDepartment');
     Route::get('', 'allDepartments');
     Route::put('{workerId}', 'updateWorker');
     Route::post('upload-image', 'upload');
