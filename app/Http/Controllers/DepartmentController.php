@@ -37,7 +37,7 @@ class DepartmentController extends BaseController
             'department_name' => $request->department_name,
             'department_short_name' => $request->department_short_name,
             'keys_taken' => $request->keys_taken,
-            'keys_available' => $request->keys_available,
+            'keys_available' => $request->keys_available
         ]);
 
         return $this->sendResponse($keyInserted, 'Department Added successfully.');
