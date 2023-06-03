@@ -33,9 +33,9 @@ Route::controller(RegisterController::class)->group(function () {
 });
 
 Route::middleware('auth:sanctum')->controller(WorkerController::class)->prefix('/workers')->group(function () {
-    Route::post('add', 'addWorker');
+    Route::post('', 'addWorker')->middleware('log.route');
     Route::get('', 'allWorkers');
-    Route::put('{workerId}', 'updateWorker');
+    Route::put('{workerId}', 'updateWorker')->middleware('log.route');;
     Route::post('upload-image', 'upload');
 });
 
@@ -54,8 +54,8 @@ Route::middleware('auth:sanctum')->controller(KeyController::class)->prefix('/ke
 });
 
 Route::middleware('auth:sanctum')->controller(KeyLogController::class)->prefix('/key-logs')->group(function () {
-    Route::post('pick', 'pickKey');
-    Route::post('drop', 'dropKey');
+    Route::post('pick', 'pickKey')->middleware('log.route');
+    Route::post('drop', 'dropKey')->middleware('log.route');
     Route::get('', 'keyLogs');
 });
 

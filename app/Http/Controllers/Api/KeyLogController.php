@@ -99,7 +99,7 @@ class KeyLogController extends BaseController
                 return $this->sendError('Key was never picked so it cannot dropped', []);
             }
 
-            $keyInserted = KeyLog::where(['worker_id' => $worker->id, 'key_id' => $request->key_id])->first();
+            $keyInserted = KeyLog::where(['worker_id' => $worker->id, 'key_id' => $request->key_id])->orderBy('id', 'DESC')->first();
 
             if (!$keyInserted) {
                 return $this->sendError('You cannot drop this key. Only the worker that picked the key can drop it', []);
@@ -107,6 +107,8 @@ class KeyLogController extends BaseController
 
             $key->key_status = 0;
             $key->save();
+
+            // KeyLog::where(['worker_id' => $worker->id, 'key_id' => $request->key_id])->update(['time_out' => Carbon::now()]);
 
             $keyInserted->time_out = Carbon::now();
             $keyInserted->save();
