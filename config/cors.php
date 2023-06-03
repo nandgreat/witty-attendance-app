@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://coza-keylog-dashboard-6ve1.vercel.app'],
 
     'allowed_origins_patterns' => [],
 
