@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AttendanceController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\KeyController;
 use App\Http\Controllers\Api\KeyLogController;
@@ -55,6 +56,12 @@ Route::middleware('auth:sanctum')->controller(KeyController::class)->prefix('/ke
 
 Route::middleware('auth:sanctum')->controller(KeyLogController::class)->prefix('/key-logs')->group(function () {
     Route::post('pick', 'pickKey')->middleware('log.route');
+    Route::post('drop', 'dropKey')->middleware('log.route');
+    Route::get('', 'keyLogs');
+});
+
+Route::middleware('auth:sanctum')->controller(AttendanceController::class)->prefix('/attendance')->group(function () {
+    Route::post('take', 'takeAttendance')->middleware('log.route');
     Route::post('drop', 'dropKey')->middleware('log.route');
     Route::get('', 'keyLogs');
 });

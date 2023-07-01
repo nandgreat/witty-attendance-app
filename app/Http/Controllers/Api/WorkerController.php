@@ -71,7 +71,7 @@ class WorkerController extends BaseController
                 $worker->save();
             }
 
-            return $this->sendResponse($worker, 'Worker Added successfully.');
+            return $this->sendResponse($worker, 'Worker Fetched successfully.');
         } catch (Exception $e) {
             return $this->sendError('Internal Server Error..', ['error' => $e->getMessage()]);
         }
@@ -83,7 +83,7 @@ class WorkerController extends BaseController
 
         try {
             $workers = DB::table('workers')->join('departments', 'departments.id', '=', 'workers.department_id')->select('workers.*', 'departments.department_name')->get();
-            return $this->sendResponse($workers, 'Worker Added successfully.');
+            return $this->sendResponse($workers, 'Workers Fetched successfully.');
         } catch (Exception $e) {
             return $this->sendError('Internal Server Error..', ['error' => $e->getMessage()]);
         }
