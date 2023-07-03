@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 
-class EventController extends Controller
+class EventController extends BaseController
 {
     //
 
