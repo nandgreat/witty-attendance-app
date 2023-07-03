@@ -66,7 +66,7 @@ Route::middleware('auth:sanctum')->controller(AttendanceController::class)->pref
 });
 
 Route::middleware('auth:sanctum')->controller(EventController::class)->prefix('/events')->group(function () {
-    Route::post('today', 'getTodayEvent')->middleware('log.route');
+    Route::get('today', 'getTodayEvent')->middleware('log.route');
 });
 
 Route::middleware('auth:sanctum')->controller(DashboardController::class)->prefix('dashboard')->group(function () {
