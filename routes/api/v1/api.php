@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AttendanceController;
 use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\KeyController;
 use App\Http\Controllers\Api\KeyLogController;
 use App\Http\Controllers\Api\RegisterController;
@@ -62,8 +63,10 @@ Route::middleware('auth:sanctum')->controller(KeyLogController::class)->prefix('
 
 Route::middleware('auth:sanctum')->controller(AttendanceController::class)->prefix('/attendance')->group(function () {
     Route::post('take', 'takeAttendance')->middleware('log.route');
-    Route::post('drop', 'dropKey')->middleware('log.route');
-    Route::get('', 'keyLogs');
+});
+
+Route::middleware('auth:sanctum')->controller(EventController::class)->prefix('/events')->group(function () {
+    Route::post('today', 'getTodayEvent')->middleware('log.route');
 });
 
 Route::middleware('auth:sanctum')->controller(DashboardController::class)->prefix('dashboard')->group(function () {
